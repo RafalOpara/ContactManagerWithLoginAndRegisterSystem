@@ -1,0 +1,34 @@
+﻿@model IEnumerable<CustomIdentity.Models.Contact>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Contacts</h2>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var contact in Model)
+        {
+            <tr>
+                <td>@contact.Name</td>
+                <td>@contact.Email</td>
+                <td>
+                    <a asp-action="Details" asp-route-contactId="@contact.Id" class="btn btn-info">Details</a>
+                    <a asp-action="Delete" asp-route-contactId="@contact.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Add" class="btn btn-primary">Add New Contact</a>
